@@ -1,0 +1,24 @@
+/* ------------------------------------------NAVBAR GUMB PODCRTAVANJE ------------------------------------------ */
+#prijedlozi_gumb {
+  text-decoration: underline;
+}
+
+/* ------------------------------------------ ZAGLAVLJE - SLIKA ------------------------------------------ */
+header {
+  background-image: url("https://github.com/fperak24/OWT_zadaca_slike/blob/main/Bajnski_dvori-kompleks.jpg?raw=true");
+
+}
+
+
+/* ------------------------------------------ SADRŽAJ STRANCIE ------------------------------------------ */
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  border: 1px solid #B7926A;
+  padding: 2em;
+  width: fit-content;
+}

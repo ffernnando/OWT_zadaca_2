@@ -1,0 +1,310 @@
+/* ------------------------------------------------- RESPONZIVNOST -------------------------------------------------
+            Stranica je responzivna za mobitele (širine do 600px), tablete (širine do 768px) i računala (preostale širine)
+
+            
+           ----------------------------- BOJE - LEGENDA --------------------------
+            Naslov - h1
+            Podnaslovi - h2
+            Tekst tijela - p (main i footer), th, td, caption, 
+            --------TEKST--------
+            Tamni tekst i naslovi: #321F13
+            Tekst tijela: #3A291A
+            Svijetli tekst na tamnoj pozadini: #E4CDA5
+
+            -------BOJE POZADINE--------
+            Tamna za navbar i footer: #3B2618
+            Vanjska main pozadina: #D8C3A5
+            Unutarnja main pozadina: #F5E6CC
+            
+            ---------HOVER I BORDER------------
+            Border standardni i za galeriju: #B7926A
+            Hover za tekst i galeriju: #D2B07A
+
+            ----------TABLICE----------
+            Pozadina tablice: F0E3D0
+            Parni redak: #E8D7C3
+            Obrub: #B7926A (standardni)
+            Tekst: #321F13 (tamni tekst standardni) i #3A291A (tekst tijela standardni)
+        
+           ----------------------------- VELIČINE TEKSTA - LEGENDA --------------------------
+            Naslov (h1)
+            2.2em desktop
+            1.8em tablet
+            1.5em mobitel
+
+            Podnaslovi (h2)
+            1.5em desktop
+            1.3em tablet
+            1.2em mobitel
+
+            Navbar tekst
+            1.1em desktop
+            1em tablet
+            0.9em mobitel
+
+            Tekst tijela (p, th, td, caption)
+            1em desktop
+            0.95em tablet
+            0.9em mobitel
+
+            Footer tekst
+            0.9em desktop
+            0.85em tablet
+            0.8em mobitel
+        */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------------------- NAVIGACIJA ---------------------------- */
+/* DODAJ RESPONZIVNO ZA NAVIGACIJU - AKO JE PREUSKI DISPLAY - OSTAJE NAVBAR S LOGOTIPOM I NEKAKVA IKONICA ZA KAO OTVARANJE MENIJA! */
+.navigacija {
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  background-color: #3B2618;
+  min-height: 2em;
+  padding: 0.25em;
+}
+
+#nav_logo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: auto 1em;
+  font-size: 1.1em;
+  color: #E4CDA5;
+}
+
+
+/* Gumbi na desnoj strani navigacije */
+#nav_gumbi {
+  display: flex;
+  justify-content: end;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.nav_gumb {
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+  text-decoration: none;
+  color: #E4CDA5;
+}
+
+.nav_gumb:hover {
+  background-color: #7F5B5F;
+  color: #D2B07A;
+  cursor: pointer;
+}
+
+
+
+/* ---------------------------- TIJELO STRANICE ---------------------------- */
+header {
+  background-image: url("https://evarazdin.hr/upload/publish/418015/thumb/page-dvorac_6835c0446c649_860x484c.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 35vh;
+  width: 100%;
+}
+
+#zatamnjenje {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  color: #F2E3C4;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+  font-size: 2.2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+.nav_gumb {
+  font-size: 1.1em;
+}
+
+p,
+td,
+th,
+caption {
+  font-size: 1em;
+}
+
+footer p {
+  font-size: 0.9em;
+}
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #d8c3a5;
+}
+
+main a {
+  color: #3A291A;
+}
+
+main a:hover {
+  color: #D2B07A;
+}
+
+
+main article {
+  width: 85%;
+  background-color: #f5e6cc;
+  border: 1px solid #B7926A;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 0 1.5em;
+  padding-bottom: 5%;
+}
+
+article p {
+  color: #3A291A;
+}
+
+article h2 {
+  color: #321F13;
+}
+
+/* --------------------------- TABLICA --------------------------- */
+
+.stupac_25_sirina {
+  width: 25%;
+}
+
+.stupac_20_sirina {
+  width: 20%;
+}
+
+.stupac_15_sirina {
+  width: 15%;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #B7926A;
+  border-collapse: collapse;
+  background-color: #F0E3D0;
+}
+
+table thead {
+  background-color: #C9B097;
+  color: #321F13;
+  text-align: left;
+}
+
+table tbody {
+  color: #3A291A;
+}
+
+th,
+td {
+  border: 1px solid #B7926A;
+}
+
+.parni_redak {
+  background-color: #E8D7C3;
+}
+
+
+/* ---------------------------- PODNOŽJE/FOOTER ---------------------------- */
+.validator_slika {
+  width: 2.5vw;
+  height: auto;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: #37241A;
+  color: #E4CDA5;
+  padding: 3em;
+}
+
+footer a {
+  text-decoration: none;
+  color: #E4CDA5;
+}
+
+footer a:hover {
+  color: #D2B07A;
+}
+
+
+
+/* --------------------------------------- RESPONZIVNO ----------------------------------- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+
+  .nav_gumb,
+  #nav_logo {
+    font-size: 1em;
+  }
+
+  p,
+  td,
+  th,
+  caption {
+    font-size: 0.95em;
+  }
+
+  footer p {
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  .nav_gumb,
+  #nav_logo {
+    font-size: 0.9em;
+    padding: 0 0.75em
+  }
+
+  p,
+  td,
+  th,
+  caption {
+    font-size: 0.9em;
+  }
+
+  footer p {
+    font-size: 0.8em;
+  }
+}
