@@ -5,7 +5,7 @@ const ZapisiModul = require('./js/server/zapisiModul.cjs');
 const server = express();
 const port = 12374;
 const putanja = __dirname;
-const zapisiModul = ZapisiModul;
+const zapisiModul = new ZapisiModul(putanja + '/zapisi.csv');
 
 server.use('/dizajn', express.static(putanja + '/css'));
 server.use('/resursi', express.static(putanja + '/resursi'));
@@ -45,10 +45,17 @@ server.get('/obrValidacija', (zahtjev, odgovor) => {
 
 
 server.get('/pregled', (zahtjev, odgovor) => {
-    let zapisi = zapisiModul.dohvatiSve(null);
+    let zapisi = zapisiModul.dohvatiSve({ naziv: "Vinica" });
+    console.log('--------------------------------------- DOHVACENI ZAPISI ---------------------------------------');
+    for (let zapis of zapisi) {
+        for (let k in zapis) {
+            console.log(`${k}: ${zapis[k]}`);
+        }
+    }
 
     odgovor.type('html');
-    odgovor.send(generirajPregledZapisa(zapisi));
+    odgovor.send("Stranica JOŠ NIJE GOTOVA! <a href='/index'>Povratak na početnu</a>");
+    //odgovor.send(generirajPregledZapisa(zapisi));
 });
 
 
