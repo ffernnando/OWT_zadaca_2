@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/dizajn/fperak24.css">
   <link rel="stylesheet" href="/dizajn/prijedlozi.css">
-  <script src="/JSklijent/js/fperak24.js"></script>
+  <script src="/JSklijent/fperak24.js"></script>
+  <script src="/JSklijent/fperak24_obrazac.js"></script>
   <title>Prijedlozi</title>
 </head>
 
@@ -56,18 +57,24 @@
   <main>
     <article>
       <h2>Pošaljite prijedlog</h2>
-      <form id="obrazac_prijedloga" action="https://spider.foi.hr/OWT/materijali/ispis_forme.php" method="post">
+      <form novalidate id="obrazac_prijedloga" action="https://spider.foi.hr/OWT/materijali/ispis_forme.php"
+        method="post">
         <label for="input_naziv">Naziv lokaliteta:</label>
-        <input id="input_naziv" type="text" name="naziv" required><br><br>
+        <input id="input_naziv" type="text" name="naziv" required>
+        <p id="greska_naziv" class="poruka_greske"></p><br><br>
+
 
         <label for="input_mail">Email:</label>
-        <input id="input_mail" type="email" name="email"><br><br>
+        <input id="input_mail" type="email" name="email">
+        <p id="greska_mail" class="poruka_greske"></p><br><br>
 
         <label for="input_godina">Godina nastanka (otprilike):</label>
-        <input id="input_godina" type="number" name="godina"><br><br>
+        <input id="input_godina" type="number" name="godina">
+        <p id="greska_godina" class="poruka_greske"></p><br><br>
 
         <label for="input_datum">Datum posjeta:</label>
-        <input id="input_datum" type="date" name="datum"><br><br>
+        <input id="input_datum" type="date" name="datum">
+        <p id="greska_datum" class="poruka_greske"></p><br><br>
 
         <div id="radio_grupa_vrsta">
           <label>Vrsta objekta:</label><br>
@@ -79,7 +86,8 @@
 
           <label for="radio_utvrda">Utvrda</label>
           <input id="radio_utvrda" type="radio" name="vrsta" value="utvrda">
-        </div><br><br>
+        </div>
+        <p id="greska_vrsta" class="poruka_greske"></p><br><br>
 
         <div id="stanje_objekta_grupa">
           <label for="range_stanje">Očuvanost objekta (od 1 do 10):</label><br>
@@ -100,7 +108,8 @@
 
           <label for="check_romanika">Romanika</label>
           <input id="check_romanika" type="checkbox" name="stil[]" value="romanika">
-        </div> <br>
+        </div>
+        <p id="greska_stil" class="poruka_greske"></p><br>
 
         <label for="odabir_lokacija">Lokacija:</label>
         <select id="odabir_lokacija" name="lokacija">
@@ -111,13 +120,15 @@
         </select><br><br>
 
         <label for="tekst_opis">Opis:</label><br>
-        <textarea id="tekst_opis" name="opis"></textarea><br><br>
+        <textarea id="tekst_opis" name="opis"></textarea>
+        <p id="greska_opis" class="poruka_greske"></p><br><br>
 
         <label for="input_slika">Slika lokaliteta:</label>
         <input id="input_slika" type="file" name="datoteka"><br><br>
 
         <label for="tekst_koordinate">Koordinate:</label>
-        <input id="tekst_koordinate" type="text" name="koordinate"><br><br>
+        <input id="tekst_koordinate" type="text" name="koordinate">
+        <p id="greska_koordinate" class="poruka_greske"></p><br><br>
 
         <input type="submit" value="Pošalji">
         <input type="reset" value="Resetiraj">

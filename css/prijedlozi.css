@@ -27,3 +27,9 @@ form {
   min-height: 40vh;
   padding: 2em 0;
 }
+
+.poruka_greske {
+  color: red;
+  font-weight: bold;
+  margin-top: 0.3em;
+}
