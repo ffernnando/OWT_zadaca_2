@@ -270,6 +270,13 @@ footer a:hover {
 }
 
 
+/* ------------------------------------------ STRANICA GREŠKE (404) --------------------------------------------- */
+.greska_stranica {
+  min-height: 35vh;
+  text-align: center;
+  padding: 3em 1em;
+}
+
 
 /* --------------------------------------- RESPONZIVNO ----------------------------------- */
 @media (max-width: 768px) {

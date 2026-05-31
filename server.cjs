@@ -200,13 +200,30 @@ server.delete('/api/zapisi/:id', (zahtjev, odgovor) => {
 
 // ----------------------------------------------- default response - ako se pokuša pristupiti stranici koja ne postoji i listener za port -----------------------------------------------
 server.use((zahtjev, odgovor) => {
+    odgovor.type('html');
     odgovor.status(404);
-    odgovor.send("Stranica ne postoji! <a href='/index'>Povratak na početnu</a>");
+    odgovor.send(generiraj404Stranicu());
 });
 server.listen(port, () => {
     console.log(`Server pokrenut na portu: ${port}`);
 });
 
+
+function generiraj404Stranicu() {
+    let html = "";
+
+    html += htmlPocetak;
+
+    html += "<section class='greska_stranica'>";
+    html += "<h2>Stranica ne postoji!</h2>";
+    html += "<p>Tražena stranica nije pronađena.</p>";
+    html += "<p><a href='/index'>Povratak na početnu</a></p>";
+    html += "</section>";
+
+    html += htmlKraj;
+
+    return html;
+}
 
 // ----------------------------------------------- POMOĆNE FUNKCIJE ZA GENERIRANJE SADRŽAJA DINAMIČKE STRANICE -----------------------------------------------
 // DODAJ možda neku malu formicu za dodavanje zapisa :3?
