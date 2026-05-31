@@ -1,6 +1,6 @@
-#lokaliteti_gumb {
+/* #lokaliteti_gumb {
   text-decoration: underline;
-}
+} */
 
 /* ----------------------------------------- SLIKE U TEKSTU --------------------------------------- */
 img {
@@ -23,3 +23,9 @@ img {
 header {
   background-image: url("https://github.com/fperak24/OWT_zadaca_slike/blob/main/Bela.jpg?raw=true");
 }
+
+/* ------------------------------------------- TABLICA ---------------------------------------------- */
+#grupa_filteri {
+  display: none;
+}
+

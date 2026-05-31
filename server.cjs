@@ -333,10 +333,14 @@ let htmlPocetak = "<!DOCTYPE html>" +
     "</div>" +
     "<div id='nav_gumbi'>" +
     "<a class='nav_gumb' id='pocetna_gumb' href='/index'>Početna</a>" +
+    "<div id='lokaliteti_padajuci'>" +
     "<a class='nav_gumb' id='lokaliteti_gumb' href='/lokaliteti'>Lokaliteti</a>" +
+    "<div id='lokaliteti_podizbornik'>" +
     "<a class='nav_gumb' id='marusevec_gumb' href='/opcinaMarusevec'>Maruševec</a>" +
     "<a class='nav_gumb' id='vinica_gumb' href='/opcinaVinica'>Vinica</a>" +
     "<a class='nav_gumb' id='novi_marof_gumb' href='/noviMarof'>Novi Marof</a>" +
+    "</div>" +
+    "</div>" +
     "<a class='nav_gumb' id='prijedlozi_gumb' href='/obrValidacija'>Prijedlozi</a>" +
     "<a class='nav_gumb' id='pregled_gumb' href='/pregled'>Pregled</a>" +
     "<a class='nav_gumb' id='api_gumb' href='/api/zapisi'>API zapisi</a>" +

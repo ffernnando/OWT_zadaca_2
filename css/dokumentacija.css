@@ -30,6 +30,25 @@ footer p {
   font-size: 0.9em;
 }
 
+/* Padajući izbornik (dropdown) */
+#lokaliteti_padajuci {
+  position: relative;
+  display: inline-block;
+  align-content: center;
+}
+
+#lokaliteti_podizbornik {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  background-color: #3B2618;
+  min-width: 10em;
+}
+
+#lokaliteti_podizbornik a {
+  display: block;
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 1.8em;
