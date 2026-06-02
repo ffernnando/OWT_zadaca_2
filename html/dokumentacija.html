@@ -58,6 +58,268 @@
         </div>
     </section>
 
+    <section id="javascript-sadrzajni_minimumi" class="p-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4">Sadržajni minimumi zadaće 2 (JavaScript)</h2>
+            <h3 class="mt-4 mb-3">Klijentski JavaScript</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Stavka</th>
+                            <th>Status</th>
+                            <th>Napomena</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vanjske JavaScript datoteke</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Klijentski JavaScript izdvojen je u vanjske datoteke
+                                <a href="/jsklijent/fperak24.js">fperak24.js</a> i <a
+                                    href="/jsklijent/fperak24_obrazac.js">fperak24_obrazac.js</a>.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Validacija obrasca</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Validacija obrasca je implementirana na već postojećem obrascu koji služi za slanje
+                                prijedloga lokaliteta, pri čemu se provjeravaju obavezna polja, email, koordinate,
+                                godina nastanka, datum posjeta, vrsta objekta, stil gradnje i opis, s time da i dva
+                                pravila uključuju odnos između više polja.
+                                Kod validacije obrasca se nalazi unutar datoteke <a
+                                    href="/jsklijent/fperak24_obrazac.js">fperak24_obrazac.js</a>.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Interaktivnost - navigacijski izbornik</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                <p>
+                                    Interaktivni navigacijski izbornik, to jest dropdown meni za lokalitete, je
+                                    implementiran na svakoj stranici web aplikacije, budući da je on dio navigacijske
+                                    trake,
+                                    a ona je jedan od sastavnih dijelova svake stranice.
+                                    Konkretno, padajući izbornik se prikazuje kada se korisnik nalazi mišem iznad gumba
+                                    "Lokaliteti" navigacijske trake, a tad se prikažu tri gumba: "Maruševec", "Vinica" i
+                                    "Novi Marof", pri čemu svaki od njih korisnika vodi do odgovarajuće stranice o
+                                    odabranom
+                                    lokalitetu (putanje u pitanju su: <a href="/opcinaMarusevec">/opcinaMarusevec</a>,
+                                    <a href="/opcinaVinica">/opcinaVinica</a>, <a href="/noviMarof">/noviMarof</a>) S
+                                    druge
+                                    strane, klik na gumb "Lokaliteti" korisnika vodi na stranicu <a
+                                        href="/lokaliteti">/lokaliteti</a> gdje je prikazan popis svih navedenih
+                                    lokacija na
+                                    kojima se nalaze promatrani lokaliteti
+                                    uz kratak opis svakog od njih.
+                                    Njegova se implementacija nalazi u datoteci <a
+                                        href="/jsklijent/fperak24.js">fperak24.js</a>
+                                </p>
+                                <p>
+                                    Važno je napomenuti i da je u navigacijskoj traci uvijek jasno označena stranica na
+                                    kojoj se kojoj se korisnik nalazi u danom trenutku, uključujući i stranicu <a
+                                        href="/index">/index</a> kod koje je, doduše, označen gumb "Početna".
+                                    Samo označavanje gumbiju u navigacijskoj traci je odrađeno na način da je pozadinska
+                                    boja gumba postavljena na nešto svjetliju boju, njegov tekst je boldan te se jasno
+                                    ističe njegov donji obrub svjetlom bojom s puno kontrasta naspram tamnosmeđe
+                                    pozadine navigacijske trake.
+                                    Ako se korisnik nalazi na stranici <a href="/lokaliteti">/lokaliteti</a>, tada je
+                                    označen gumb "Lokaliteti" u navigacijskoj traci, no ako se korisnik nalazi na nekoj
+                                    od stranica lokaliteta, kao što je npr. stranica <a
+                                        href="/opcinaMarusevec">/opcinaMarusevec</a>, tada će u navigacijskoj traci biti
+                                    označen gumb "Lokaliteti", no kad korisnik pređe mišem iznad tog gumba, tada će u
+                                    padajućem izborniku jasno vidjeti kako je konkretno označen gumb "Maruševec", što mu
+                                    daje do znanja na kojoj se točno stranici on trenutačno nalazi.
+                                </p>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="/lokaliteti#tablica_lokaliteta">Interaktivnost - tablica</a></td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Interaktivnost tablice je odrađena na tablici koja prikazuje sve lokalitete obrađivane
+                                na ovoj web aplikaciji, a nalazi se na stranici <a
+                                    href="/lokaliteti#tablica_lokaliteta">/lokaliteti</a>.
+                                Specifično, interaktivne mogućnosti koje su implementirane su mogućnosti pretraživanja
+                                zapisa prema unesenome pojmu te mogućnost filtriranja zapisa tablice prema odabranim
+                                kriterijima vrsta objekata. Pretraživanje provjerava podudaranja unesenog pojma s
+                                nazivom, područjem, vrstom objekta, razdobljem te stanjem svakog objekta. Promjene koje
+                                nastanu kada korisnik pretraži lokalitete na temelju unesenog pojma pretraživanja i/ili
+                                odabranih vrsta lokaliteta se primjenjuju bez ponovnog učitavanja tablice.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="mt-5 mb-3">Poslužiteljska strana</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Stavka</th>
+                            <th>Status</th>
+                            <th>Napomena</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Port za NodeJS poslužitelj</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Kreiran je vlastiti NodeJS web poslužitelj pomoću Express okvira, a poslužitelj se
+                                pokreće na dodijeljenom portu (12374), s time da je glavna poslužiteljska datoteka
+                                server.cjs.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Posluživanje HTML stranica</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                NodeJS poslužitelj poslužuje HTML stranice kao statične stranice, odnosno svaku stranicu
+                                posebno, a njima se pristupa preko ruta koje odgovaraju nazivima stranica bez
+                                ekstenzije (.html), primjerice <a href="/index">/index</a>, <a
+                                    href="/lokaliteti">/lokaliteti</a>,
+                                <a href="/opcinaMarusevec">/opcinaMarusevec</a>, <a
+                                    href="/opcinaVinica">/opcinaVinica</a>,
+                                <a href="/noviMarof">/noviMarof</a>, <a href="/obrValidacija">/obrValidacija</a> i
+                                <a href="/dokumentacija">/dokumentacija</a>. S druge strane, pristupom na korijensku
+                                putanju
+                                <a href="/">/</a> korisnika se automatski preusmjerava na početnu stranicu putanje <a
+                                    href="/index">/index</a>.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Posluživanje direktorija</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                NodeJs poslužitelj ujedno poslužuje i direktorij klijentskog JavaScripta na putanji
+                                <a href="/JSklijent/fperak24.js">/JSklijent</a>, CSS direktorij poslužuje na putanji
+                                <a href="/dizajn/fperak24.css">/dizajn</a>, dok direktorij resursi na putanji
+                                <a href="/resursi">/resursi</a>, čime su odvojeno posluženi skripte, dizajn (stilovi) i
+                                resursi (u ovom slučaju slike) web aplikacije.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>JavaScript datoteke na poslužiteljskoj strani</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Sve JavaScript datoteke na poslužiteljskoj strani ovog projekta koriste ekstenziju .cjs,
+                                naspram datoteka klijentskog JavaScripta koje koriste ekstenziju .js, s time da je
+                                glavna poslužiteljska datoteka server.cjs, dok je vlastiti modul za rad sa zapisima
+                                zapisiModul.cjs.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Nepostojeće putanje</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Za sve nepostojeće putanje poslužitelj vraća statusni kod 404 i prikazuje stranicu
+                                s porukom "Stranica ne postoji!" te poveznicom koja vodi na početnu stranicu
+                                <a href="/index">/index</a> te je važno napomenuti kako je ova stranica greške
+                                oblikovana u skladu sa stilom ostatka web aplikacije (poruka se prikazuje u glavnom
+                                dijelu stranice, podno navigacijske trake i dijela s pozadinskom slikom i nazivom
+                                aplikacije).
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Dinamička stranica <a href="/pregled">/pregled</a></td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Na putanji <a href="/pregled">/pregled</a> se poslužuje dinamička stranica koja
+                                čita podatke iz datoteke zapisi.csv korištenjem vlastitog modula pohranjenog u datoteci
+                                zapisiModul.cjs, a pročitane zapise prikazuje
+                                u HTML tablici, s time da se za svaki zapis prikazuju id, naziv i kategorija,
+                                poveznica "Prikaži" koja vodi na odgovarajući detaljni prikaz te obrazac s gumbom
+                                "Obriši" koji POST metodom šalje zahtjev na putanju /pregled/obrisi/{id}. Iznad
+                                tablice nalazi se obrazac za pretraživanje koji koristi GET parametre pojam i
+                                kategorija.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Dinamička stranica /pregled/{id}</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                NodeJs poslužitelj poslužuje dinamičku stranicu za pojedinačni zapis na putanji
+                                <a href="/pregled/1">/pregled/{id}</a>. Ta stranica prima id zapisa putem parametra
+                                putanje {id}, a zatim pomoću vlastitog modula pronalazi odgovarajući zapis u datoteci
+                                zapisi.csv te prikazuje sve njegove podatke: id, naziv, opis, kategoriju i datumUnosa.
+                                U slučaju da zapis nije pronađen, tada se prikazuje odgovarajuća poruka "Traženi zapis
+                                nije pronađen!" te
+                                poveznica za povratak na <a href="/pregled">/pregled</a> s tekstom "Povratak na pregled
+                                svih zapisa".
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>REST servis /api/zapisi</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                NodeJs poslužitelj poslužuje REST servis za resurse zapisi na putanji
+                                <a href="/api/zapisi">/api/zapisi</a>, s time da GET zahtjev na ovu putanju vraća sve
+                                zapise ili filtrirane
+                                zapise u JSON formatu, ovisno o GET parametrima pojam i kategorija. POST zahtjev na ovu
+                                putanju
+                                omogućuje dodavanje novog zapisa, pri čemu id određuje poslužitelj kao sljedeći
+                                slobodan cijeli broj. S druge strane, PUT i DELETE nad kolekcijom zapisa nisu dopušteni
+                                i, shodno tome, vraćaju
+                                odgovarajuću JSON poruku greške.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>REST servis /api/zapisi/{id}</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                NodeJs poslužitelj poslužuje REST servis za pojedinačni zapis na putanji
+                                <a href="/api/zapisi/1">/api/zapisi/{id}</a>, pri čemu GET zahtjev vraća traženi zapis u
+                                JSON formatu, PUT zahtjev ažurira postojeći zapis, a DELETE zahtjev briše zapis iz
+                                datoteke zapisi.csv. Međutim, POST zahtjev nad pojedinačnim zapisom nije dopušten i
+                                vraća
+                                status 405 s odgovarajućom porukom greške.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Vlastiti modul</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Unutar server poddirektorija njemu nadređenog direktorija js je izrađen vlastiti Node.js
+                                modul za rad s podacima pohranjenima u CSV datoteci
+                                zapisi.csv. Modul izvozi klasu za rad sa zapisima i koristi znak ljestve (#) kao
+                                separator vrijednosti, dok su sami zapisi odvojeni znakom \r\n. Implementirane funkcije
+                                su: dohvatiSve, dohvatiPoIdentifikatoru,
+                                dodajNovi, azurirajPostojeci i ukloniPoIdentifikatoru.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Poruke grešaka</td>
+                            <td><span class="badge bg-success">Napravljeno</span></td>
+                            <td>
+                                Sve poruke grešaka REST servisa vraćaju se unutar tijela HTTP odgovora pod
+                                atributom "greska" u JSON obliku, s time da su poruke grešaka usklađene s formatom
+                                koji je zadan u uputama zadaće.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <section id="stranice" class="p-5">
         <div class="container">
             <h2 class="mb-4">Popis stranica</h2>

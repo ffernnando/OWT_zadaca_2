@@ -216,7 +216,6 @@ function generiraj404Stranicu() {
 
     html += "<section class='greska_stranica'>";
     html += "<h2>Stranica ne postoji!</h2>";
-    html += "<p>Tražena stranica nije pronađena.</p>";
     html += "<p><a href='/index'>Povratak na početnu</a></p>";
     html += "</section>";
 
