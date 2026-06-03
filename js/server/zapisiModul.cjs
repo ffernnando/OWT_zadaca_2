@@ -11,7 +11,7 @@ class ZapisiModul {
         let redovi = podaci.split("\r\n");
 
         for (let red of redovi) {
-            // pazi na prazne redove :)
+            // pazi na prazne redove
             if (red !== "") {
                 let stupci = red.split("#");
                 let zapis = {
@@ -48,18 +48,6 @@ class ZapisiModul {
 
         let zapisi = this.dohvatiObjekte();
 
-        /* zapisi.forEach(zapis => {
-            console.log('------------------------ ZAPIS ------------------------');
-            for (const key in zapis) {
-                console.log(`${key}: ${zapis[key]}`);
-            }
-        }); */
-
-        console.log('KRITERIJI: ');
-        for (let key in kriteriji) {
-            console.log(`${key}: ${kriteriji[key]}`);
-        }
-
         let filtriraniZapisi = new Array();
 
         for (let zapis of zapisi) {
@@ -74,20 +62,6 @@ class ZapisiModul {
                 }
             }
 
-            /*
-            ------------------ KRIVO -> TREBA MALO ČITATI UPUTE ŠEFE ---------------------------
-            if (kriteriji.naziv !== undefined && kriteriji.naziv !== "") {
-                if (!zapis.naziv.toLowerCase().includes(kriteriji.naziv.toLowerCase())) {
-                    prolazno = false;
-                }
-            }
-
-            if (kriteriji.opis !== undefined && kriteriji.opis !== "") {
-                if (!zapis.opis.toLowerCase().includes(kriteriji.opis.toLowerCase())) {
-                    prolazno = false;
-                }
-            }*/
-
             if (kriteriji.kategorija !== undefined && kriteriji.kategorija !== "") {
                 if (zapis.kategorija.toLowerCase() !== kriteriji.kategorija.toLowerCase()) {
                     prolazno = false;
@@ -99,37 +73,7 @@ class ZapisiModul {
             }
         }
 
-        /* for (let k in filtriraniZapisi) {
-            console.log(`${k}: ${filtriraniZapisi[k]}`);
-        } */
-
         return filtriraniZapisi;
-
-
-
-        // kriteriji mogu biti za filtriranje po nazivu ili opisu ili kategoriji (ili datumu unosa??)
-        //1#Kurija Calinec#Kurija u naselju Calinec povezana je s povijesnim razvojem maruseveckog kraja.#kurija#2026-04-19
-        // id#naziv#opis#kategorija#datumUnosa
-        /*
-            objekt kriteriji
-            kriteriji {
-                naziv: "",
-                opis: "",
-                kategorija: ""
-            };
-
-            U svakom slučaju trebaš prvo dohvatiti sve iz .csv datoteke i parsirati tak da napraviš da bude 1 linija = 1 objekt
-            Dakle, prvo ideš po separatoru '\n' da dobiješ redove/linije koji će kasnije postati objektima
-            Potom za svaku liniju iz nekog arrayja gradiš novi objekt tipa zapis ili kaj već tako da podijeliš po znaku "#" i
-            svaki taj dijelić linije pohraniš u odgovarajuće svojstvo objekta, pri čemu ga, naravno, prvo parsiraš u odgovrajući tip podataka
-
-            Onda na neku foru provjeravaš je li koji kriterij postvaljen i primjenjuješ odgovarajuće filtere na rezultate
-            U biti samo redom ideš if (kriteriji.naziv !== null && kriteriji.naziv !== "") rezultati.filtrirajPoNazivu(naziv)
-                if (kriteriji.opis !== null && kriteriji.opis !== "") rezultati.filtrirajPoOpisu(opis)
-                if (kriteriji.kategorija !== null && kriteriji.kategorija !== "") rezultati.filtrirajPoKategoriji(kategorija)
-            Te sve filtracije su zasebne pomoćne funkcije            
-        */
-
     }
 
     dohvatiPoIdentifikatoru(id) {
@@ -178,8 +122,6 @@ class ZapisiModul {
             }
         }
 
-        console.log("Stringificirani novi zapis: " + stringNoviZapis);
-
         ds.writeFileSync(this.putanjaDatoteke, stringNoviZapis, { encoding: "utf-8", flag: 'a+' });
 
         return noviZapis;
@@ -225,17 +167,8 @@ class ZapisiModul {
 
 
         let stringZapisi = this.stringificirajZapise(azuriraniZapisi);
-        console.log(`Stringificiran popis svih zapisa:\n${stringZapisi}`);
 
         ds.writeFileSync(this.putanjaDatoteke, stringZapisi, "utf-8");
-
-        /*  1. dohvati sve i pretvori u objekte
-            2. pronađi objekt s odgovarajućim id-jem
-            3. prepravi objekt tak da mu postavi nove vrijednosti za svojstva koja već da su bila odabrana (slično ko s kriterijima nekaj)
-            4. zamijeni stari traženi objekt novim-izmijenjenim objektom
-            5. stringificiraj sve zapise skupa
-            6. pohrani u csv
-        */
 
         return trazeniZapis;
     }
@@ -263,17 +196,10 @@ class ZapisiModul {
         }
 
         let stringZapisi = this.stringificirajZapise(azuriraniZapisi);
-        console.log(`Stringificiran popis svih zapisa:\n${stringZapisi}`);
 
         ds.writeFileSync(this.putanjaDatoteke, stringZapisi, "utf-8");
 
         return true;
-        /*  1. dohvati sve i pretvori u objekte
-            2. napravi novu praznu listu
-            3. iteriraj kroz početnu listu i pushaj svaki objekt iz nje na novu listu osim onog s traženim id-jem
-            4. stringificiraj sve zapise nove liste
-            5. pohrani u csv
-        */
     }
 }
 

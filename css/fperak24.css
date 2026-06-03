@@ -59,7 +59,6 @@ body {
 }
 
 /* ---------------------------- NAVIGACIJA ---------------------------- */
-/* DODAJ RESPONZIVNO ZA NAVIGACIJU - AKO JE PREUSKI DISPLAY - OSTAJE NAVBAR S LOGOTIPOM I NEKAKVA IKONICA ZA KAO OTVARANJE MENIJA! */
 .navigacija {
   width: 100%;
   position: fixed;

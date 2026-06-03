@@ -111,13 +111,13 @@ function provjeriObrazac(dogadaj) {
     }
   }
 
-  // 2. Odnos između polja: Ako je objekt loše očuvan, tada opis mora biti detaljniji (nije dosta tipa: "Sve super očuvano, top, sve preporuke.", treba se napomenuti zašto je zaslužio pripadnost takvoj kategoriju).
-  if (parseInt(stanje.value) <= 3 && opis.value.length < 60) {
+  // 2. Odnos između polja: Ako je objekt loše očuvan, tada opis mora biti detaljniji (nije dovoljno npr: "Sve super očuvano, top, sve preporuke.", treba se napomenuti zašto je zaslužio pripadnost takvoj kategoriju).
+  if (!tekstJePrazan(opis.value) && parseInt(stanje.value) <= 3 && opis.value.length < 60) {
     postaviGresku(opis, "greska_opis", "Za loše očuvan objekt potrebno je napisati opis od barem 60 znakova.");
     ispravno = false;
   }
 
-  // 23 Odnos između polja: Ako je vrsta utvrda, godina nastanka ne bi trebala biti nakon 1900.
+  // 3. Odnos između polja: Ako je vrsta utvrda, godina nastanka ne bi trebala biti nakon 1900.
   if (odabranaVrijednostVrste() === "utvrda" && !tekstJePrazan(godina.value)) {
     let godinaBroj = parseInt(godina.value);
 

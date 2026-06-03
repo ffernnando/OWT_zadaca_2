@@ -1,5 +1,5 @@
-const express = require('express'); // na spideru: const bodyParser = require('/usr/lib64/node_modules/express');
-const bodyParser = require('body-parser') // na spideru: const bodyParser = require('/usr/lib64/node_modules/body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 const ZapisiModul = require('./js/server/zapisiModul.cjs');
 
 
@@ -54,13 +54,6 @@ server.get('/obrValidacija', (zahtjev, odgovor) => {
 server.get('/pregled', (zahtjev, odgovor) => {
     let zapisi = zapisiModul.dohvatiSve(zahtjev.query);
 
-    console.log('--------------------------------------- DOHVACENI ZAPISI ---------------------------------------');
-    for (let zapis of zapisi) {
-        for (let k in zapis) {
-            console.log(`${k}: ${zapis[k]}`);
-        }
-    }
-
     odgovor.type('html');
     odgovor.send(generirajPregledZapisa(zapisi));
 });
@@ -68,13 +61,6 @@ server.get('/pregled', (zahtjev, odgovor) => {
 server.get('/pregled/:id', (zahtjev, odgovor) => {
     let id = zahtjev.params.id;
     let zapis = zapisiModul.dohvatiPoIdentifikatoru(id);
-
-    console.log('--------------------------------------- DOHVACENI ZAPIS ---------------------------------------');
-    if (zapis !== null) {
-        for (let k in zapis) {
-            console.log(`${k}: ${zapis[k]}`);
-        }
-    }
 
     odgovor.type('html');
     odgovor.send(generirajDetaljeZapisa(zapis));
@@ -85,13 +71,8 @@ server.post('/pregled/obrisi/:id', (zahtjev, odgovor) => {
 
     let uspjeh = zapisiModul.ukloniPoIdentifikatoru(id);
 
-    console.log('Uspjeh: ', uspjeh);
-
     odgovor.redirect('/pregled');
 });
-
-
-// implementirati get za jedan zapis preko id-ja
 
 
 // ---------------------------------------------- REST SERVIS - /api/zapisi ----------------------------------------------
@@ -105,15 +86,7 @@ server.get('/api/zapisi', (zahtjev, odgovor) => {
 
 server.post('/api/zapisi', (zahtjev, odgovor) => {
     let noviZapis = zahtjev.body;
-    /* FORMAT ZAPISA
-        {
-            "naziv":"naziv",
-            "opis":"opis",
-            "kategorija":"kategorija",
-            "datumUnosa":"datumUnosa"
-        }
 
-    */
     odgovor.type('json');
     if (noviZapis.naziv === undefined || noviZapis.naziv === "" || noviZapis.opis === undefined || noviZapis.opis === "" || noviZapis.kategorija === undefined || noviZapis.kategorija === "" || noviZapis.datumUnosa === undefined || noviZapis.datumUnosa === "") {
         odgovor.status(400);
@@ -176,7 +149,7 @@ server.put('/api/zapisi/:id', (zahtjev, odgovor) => {
             odgovor.send(JSON.stringify({ greska: "Zapis s traženim id-im nije pronađen za ažuriranje." }));
         } else {
             odgovor.status(200);
-            odgovor.send(noviZahtjev)
+            odgovor.send(JSON.stringify(noviZahtjev));
         }
     }
 });
@@ -225,7 +198,6 @@ function generiraj404Stranicu() {
 }
 
 // ----------------------------------------------- POMOĆNE FUNKCIJE ZA GENERIRANJE SADRŽAJA DINAMIČKE STRANICE -----------------------------------------------
-// DODAJ možda neku malu formicu za dodavanje zapisa :3?
 
 function generirajDetaljeZapisa(zapis) {
     let html = "";
@@ -262,7 +234,7 @@ function generirajPregledZapisa(zapisi) {
 
     html += "<h2>Pretraživanje zapisa</h2>";
     html += "<form action = '/pregled' method = 'get' >";
-    html += "<label for='input_pojam'>Pojam za pretrazivanje:</label>";
+    html += "<label for='input_pojam'>Pojam za pretraživanje:</label>";
     html += "<input id='input_pojam' type='text' name='pojam'><br><br>";
     html += "<label for='select_kategorija'>Kategorija: </label>";
     html += "<select id='select_kategorija' name='kategorija'>";
@@ -278,7 +250,7 @@ function generirajPregledZapisa(zapisi) {
     html += "<section>";
     html += "<h2>Tablica zapisa</h2>";
 
-    html += "<table id='tablica_lokaliteta'>";
+    html += "<table id='tablica_zapisa'>";
     html += "<caption>Zapisi iz datoteke zapisi.csv</caption>";
 
     html += "<thead>";
@@ -330,7 +302,7 @@ function generirajPregledZapisa(zapisi) {
     return html;
 }
 
-// ----------------------------------------------- VARIJABLE ZA POHRANU COPY-PASTE DIJELOVA HTML-A KOJI SU ISTI NA OBJE DINAMIČKE STRANICE -----------------------------------------------
+// ----------------------------------------------- VARIJABLE ZA POHRANU DIJELOVA HTML-A KOJI SU ISTI NA OBJE DINAMIČKE STRANICE -----------------------------------------------
 
 let htmlPocetak = "<!DOCTYPE html>" +
     "<html lang='hr'>" +
@@ -380,25 +352,11 @@ let htmlKraj = "</article>" +
     "<a href='mailto:fperak24@student.foi.hr'>fperak24@student.foi.hr</a>" +
     "</p>" +
     "<p>" +
-    "<a href='/dokumentacija'>Dokumentacija</a>" +
+    "<a href='/dokumentacija'>Dokumentacija</a> " +
+    "<a href='http://validator.w3.org/check?uri=http://spider.foi.hr:12374/pregled'>" +
+    "<img class='validator_slika' src='https://spider.foi.hr/OWT/materijali/slike/HTML5.png' alt='Slika validatora'>" +
+    "</a>" +
     "</p>" +
     "</footer>" +
     "</body>" +
     "</html>";
-
-
-/*
-Backup zapisa ako bi slučajno brisao:
- 
-1#Kurija Calinec#Kurija u naselju Calinec povezana je s povijesnim razvojem maruseveckog kraja.#kurija#2026-04-19
-2#Dvorac Marusevec#Dvorac Marusevec jedan je od najpoznatijih lokaliteta na podrucju opcine Marusevec.#dvorac#2026-04-20
-3#Bajnski dvori#Bajnski dvori predstavljaju povijesni kompleks na podrucju Gornjeg Ladanja koji je danas u losem stanju.#dvorac#2026-04-21
-4#Stari grad Vinica#Stari grad Vinica srednjovjekovna je utvrda ciji se ostaci nalaze na podrucju Vinice.#utvrda#2026-04-22
-5#Dvorac Opeka#Dvorac Opeka nalazi se u Marcanu i poznat je po povezanosti s arboretumom Opeka.#dvorac#2026-04-23
-6#Pusta Bela#Pusta Bela odnosi se na ostatke starije utvrde na podrucju Bele kod Novog Marofa.#utvrda#2026-04-24
-7#Dvorac Bela I#Dvorac Bela I pripada skupini povijesnih lokaliteta novomarofskog podrucja.#dvorac#2026-04-25
-8#Dvorac Bela II#Dvorac Bela II povezan je s plemickom bastinom Bele i sireg novomarofskog kraja.#dvorac#2026-04-26
-9#Kurija Ladanje#Kurija Ladanje predstavlja primjer manjeg plemickog objekta na prostoru sjeverozapadne Hrvatske.#kurija#2026-04-27
-10#Utvrda Grebengrad#Utvrda Grebengrad srednjovjekovni je lokalitet povezan s povijescu sireg novomarofskog prostora.#utvrda#2026-04-28
-
-*/
